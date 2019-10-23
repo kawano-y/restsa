@@ -6,4 +6,5 @@ REST ful sample
 ```shell script
 cd <this project>
 docker-compose up -d
+mysql -uroot -proot
 ```
