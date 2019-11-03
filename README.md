@@ -25,3 +25,6 @@ http://localhost:5601
 
 ## spring boot 起動
 `./gradlew bootRun`
+
+## ssh
+ssh -i "~/.ssh/ky-st.pem" ec2-user@ec2-13-231-57-84.ap-northeast-1.compute.amazonaws.com

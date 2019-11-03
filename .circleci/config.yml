@@ -18,7 +18,7 @@ jobs:
 
     environment:
       # Customize the JVM maximum heap limit
-      JVM_OPTS: -Xmx3200m
+      JVM_OPTS: -Xmx1000m
       TERM: dumb
 
     steps:
@@ -40,3 +40,29 @@ jobs:
 
       # run tests!
 #      - run: gradle test
+
+  deploy:
+    machine:
+      enabled: true
+    working_directory: ~/circleci-restsa-workflows
+    environment:
+      RESTSA_APP_ST: "restsa"
+    steps:
+      - checkout
+      - run:
+          name: Master を restsa にデプロイ
+          command: |
+            git push git@github.com:kawano-y/restsa.git master
+# テストが成功した場合のみ、deployを実行するようにします。
+workflows:
+  version: 2
+  build_and_deploy:
+    jobs:
+      - build
+      - deploy:
+          requires:
+            - build
+          # masterブランチがpushされた場合のみdeployするようにする。
+          filters:
+            branches:
+              only: master
