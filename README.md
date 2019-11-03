@@ -22,3 +22,6 @@ http://0.0.0.0:8081/
 ## elastic
 ### kibana
 http://localhost:5601
+
+## spring boot 起動
+`./gradlew bootRun`
