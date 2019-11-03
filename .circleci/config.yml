@@ -49,6 +49,10 @@ jobs:
       RESTSA_APP_ST: "restsa"
     steps:
       - checkout
+      - add_ssh_keys:
+      - run:
+          name: awscli をインストール
+          command: sudo pip install awscli
       - run:
           name: Master を restsa にデプロイ
           command: |
