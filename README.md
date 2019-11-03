@@ -28,3 +28,7 @@ http://localhost:5601
 
 ## ssh
 ssh -i "~/.ssh/ky-st.pem" ec2-user@ec2-13-231-57-84.ap-northeast-1.compute.amazonaws.com
+
+
+## ec2 sshkey register
+https://qiita.com/sshojiro/items/60982f06c1a0ba88c160
