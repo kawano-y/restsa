@@ -57,7 +57,8 @@ jobs:
           command: >
             ssh ${USER_NAME}@${HOST_NAME} 'cd restsa && pwd &&
             echo "start ssh-agent" &&
-            eval "$(ssh-agent)" && ssh-add ~/.ssh/ec2_github_key && git pull'
+            eval "$(ssh-agent)" && ssh-add ~/.ssh/ec2_github_key && git pull &&
+            ssh-agent -k'
 # テストが成功した場合のみ、deployを実行するようにします。
 workflows:
   version: 2
