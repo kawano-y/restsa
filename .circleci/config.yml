@@ -58,7 +58,6 @@ jobs:
             ssh ${USER_NAME}@${HOST_NAME} 'pwd &&
             echo "start ssh-agent" &&
             eval "$(ssh-agent)" && ssh-add ~/.ssh/ec2_github_key &&
-            git clone git@github.com:kawano-y/restsa.git &&
             cd restsa &&
             git pull &&
             ./gradlew build &&
