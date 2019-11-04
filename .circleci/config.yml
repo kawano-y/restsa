@@ -50,6 +50,8 @@ jobs:
     steps:
       - checkout
       - add_ssh_keys:
+          fingerprints:
+              - "68:75:98:70:60:18:4c:ac:b8:ff:70:79:d3:af:25:4a"
       - run:
           name: awscli をインストール
           command: sudo pip install awscli
