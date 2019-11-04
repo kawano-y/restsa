@@ -51,14 +51,13 @@ jobs:
       - checkout
       - add_ssh_keys:
           fingerprints:
-              - "68:75:98:70:60:18:4c:ac:b8:ff:70:79:d3:af:25:4a"
-      - run:
-          name: awscli をインストール
-          command: sudo pip install awscli
+              - "92:bd:03:65:5c:9d:44:24:cc:20:cb:47:e2:e7:ad:97"
       - run:
           name: Master を restsa にデプロイ
-          command: |
-            ssh ec2-user@ec2-13-231-57-84.ap-northeast-1.compute.amazonaws.com 'pwd'
+          command: >
+            ssh ${USER_NAME}@${HOST_NAME} 'cd restsa && pwd &&
+            echo "start ssh-agent"
+            eval "$(ssh-agent)" && ssh-add ~/.ssh/ec2_github_key && git pull'
 # テストが成功した場合のみ、deployを実行するようにします。
 workflows:
   version: 2
