@@ -14,7 +14,7 @@ jobs:
       # documented at https://circleci.com/docs/2.0/circleci-images/
       # - image: circleci/postgres:9.4
 
-    working_directory: ~/restsa
+    working_directory: ~/repo
 
     environment:
       # Customize the JVM maximum heap limit
@@ -42,8 +42,6 @@ jobs:
 #      - run: gradle test
 
   deploy:
-    docker:
-      - image: circleci/openjdk:8-jdk
     machine:
       enabled: true
     working_directory: ~/circleci-restsa-workflows
@@ -59,7 +57,9 @@ jobs:
           command: >
             ssh ${USER_NAME}@${HOST_NAME} 'cd restsa && pwd &&
             echo "start ssh-agent" &&
-            eval "$(ssh-agent)" && ssh-add ~/.ssh/ec2_github_key && git pull &&
+            eval "$(ssh-agent)" && ssh-add ~/.ssh/ec2_github_key &&
+            git clone git@github.com:kawano-y/restsa.git &&
+            git pull &&
             ./gradlew build &&
             ssh-agent -k'
 # テストが成功した場合のみ、deployを実行するようにします。
