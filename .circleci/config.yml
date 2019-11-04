@@ -56,7 +56,7 @@ jobs:
           name: Master を restsa にデプロイ
           command: >
             ssh ${USER_NAME}@${HOST_NAME} 'cd restsa && pwd &&
-            echo "start ssh-agent"
+            echo "start ssh-agent" &&
             eval "$(ssh-agent)" && ssh-add ~/.ssh/ec2_github_key && git pull'
 # テストが成功した場合のみ、deployを実行するようにします。
 workflows:
