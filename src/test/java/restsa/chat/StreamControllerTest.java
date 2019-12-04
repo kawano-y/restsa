@@ -23,7 +23,7 @@ public class StreamControllerTest {
     public void streaming() {
         HttpEntity<String> requestEntity = new HttpEntity<>("");
         for (int i = 0; i < 100; i++) {
-            ResponseEntity<String> actual = restTemplate.exchange("/streaming", HttpMethod.GET, requestEntity, String.class);
+            ResponseEntity<String> actual = restTemplate.exchange("/_streaming", HttpMethod.GET, requestEntity, String.class);
         }
     }
 }
