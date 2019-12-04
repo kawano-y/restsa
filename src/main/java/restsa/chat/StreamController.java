@@ -9,7 +9,7 @@ import org.springframework.web.servlet.mvc.method.annotation.StreamingResponseBo
 @RestController
 public class StreamController {
 
-    @GetMapping("/streaming")
+    @GetMapping("/_streaming")
     public ResponseEntity<StreamingResponseBody> streaming(){
         return ResponseEntity.ok().contentType(MediaType.APPLICATION_JSON_UTF8).body(outputStream -> {
             outputStream.flush();
